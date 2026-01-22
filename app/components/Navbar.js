@@ -784,6 +784,265 @@
 // }
 
 
+// "use client";
+
+// import Link from "next/link";
+// import { useSession, signOut } from "next-auth/react";
+// import { usePathname } from "next/navigation";
+// import {
+//   Menu,
+//   LogOut,
+//   X,
+//   Briefcase,
+//   LayoutDashboard,
+//   Sparkles,
+//   Info,
+//   Mail,
+//   Home,
+//   User,
+//   Users,
+//   MessageSquare,
+// } from "lucide-react";
+// import { useState } from "react";
+
+// export default function Navbar() {
+//   const { data: session } = useSession();
+//   const pathname = usePathname();
+//   const [isOpen, setIsOpen] = useState(false);
+
+//   const isAdmin = session?.user?.role === "admin";
+
+//   const handleSignOut = async () => {
+//     await signOut({ callbackUrl: "/" });
+//   };
+
+//   return (
+//     <>
+//       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200 shadow-lg">
+//         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+//           <div className="flex justify-between h-16 items-center">
+
+//             {/* Logo */}
+//             <Link href="/" className="flex items-center gap-3">
+//               <div className="w-10 h-10 bg-gradient-to-br from-indigo-600 to-sky-500 rounded-xl flex items-center justify-center">
+//                 <Briefcase size={20} className="text-white" />
+//               </div>
+//               <h1 className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-sky-500 bg-clip-text text-transparent">
+//                 JobPortal
+//               </h1>
+//             </Link>
+
+//             {/* Desktop Menu */}
+//             <div className="hidden md:flex items-center gap-1">
+//               {!isAdmin && (
+//                 <NavLink href="/" icon={<Home size={18} />} label="Home" pathname={pathname} />
+//               )}
+
+//               {!isAdmin && (
+//                 <NavLink href="/jobs" icon={<Briefcase size={18} />} label="Jobs" pathname={pathname} />
+//               )}
+
+//               {!isAdmin && (
+//                 <NavLink href="/aboutus" icon={<Info size={18} />} label="About Us" pathname={pathname} />
+//               )}
+
+//               {!isAdmin && (
+//                 <NavLink href="/contactus" icon={<Mail size={18} />} label="Contact" pathname={pathname} />
+//               )}
+
+//               {session && (
+//                 <NavLink
+//                   href="/dashboard"
+//                   icon={<LayoutDashboard size={18} />}
+//                   label="Dashboard"
+//                   pathname={pathname}
+//                 />
+//               )}
+
+//               {isAdmin && (
+//                 <NavLink
+//                   href="/dashboard/admin/application"
+//                   icon={<Users size={18} />}
+//                   label="Applications"
+//                   pathname={pathname}
+//                 />
+//               )}
+
+//               {isAdmin && (
+//                 <NavLink
+//                   href="/dashboard/admin/jobListing"
+//                   icon={<Users size={18} />}
+//                   label="Job Listing"
+//                   pathname={pathname}
+//                 />
+//               )}
+
+//               {isAdmin && (
+//                 <NavLink
+//                   href="/dashboard/admin/users"
+//                   icon={<User size={18} />}
+//                   label="Users"
+//                   pathname={pathname}
+//                 />
+//               )}
+
+//               {isAdmin && (
+//                 <NavLink
+//                   href="/dashboard/admin/messages"
+//                   icon={<MessageSquare size={18} />}
+//                   label="Messages"
+//                   pathname={pathname}
+//                 />
+//               )}
+
+//               {session && session.user?.role === "user" && (
+//                 <NavLink
+//                   href="/profile"
+//                   icon={<User size={18} />}
+//                   label="Profile"
+//                   pathname={pathname}
+//                 />
+//               )}
+
+//               {!session ? (
+//                 <Link
+//                   href="/signin"
+//                   className="ml-4 flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-sky-500 text-white px-6 py-2.5 rounded-xl font-semibold"
+//                 >
+//                   <Sparkles size={18} />
+//                   Sign In
+//                 </Link>
+//               ) : (
+//                 <div className="ml-4 flex items-center gap-3 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2">
+//                   <div className="relative">
+//                     <img
+//                       src={session.user.image || "/user.png"}
+//                       alt="User"
+//                       className="w-9 h-9 rounded-full border-2 border-indigo-500"
+//                     />
+//                     <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border-2 border-white" />
+//                   </div>
+//                   <div className="hidden lg:block">
+//                     <p className="text-slate-900 font-semibold text-sm">
+//                       {session.user.name}
+//                     </p>
+//                     <p className="text-slate-500 text-xs">Active</p>
+//                   </div>
+//                   <button
+//                     onClick={handleSignOut}
+//                     className="p-2 text-red-500 hover:bg-red-50 rounded-lg"
+//                   >
+//                     <LogOut size={18} />
+//                   </button>
+//                 </div>
+//               )}
+//             </div>
+
+//             {/* Mobile Toggle */}
+//             <div className="md:hidden">
+//               <button onClick={() => setIsOpen(!isOpen)}>
+//                 {isOpen ? <X size={28} /> : <Menu size={28} />}
+//               </button>
+//             </div>
+//           </div>
+//         </div>
+
+//         {/* Mobile Menu */}
+//         <div className={`md:hidden transition-all ${isOpen ? "max-h-[600px]" : "max-h-0 overflow-hidden"}`}>
+//           <div className="bg-white border-t px-4 py-4 space-y-2">
+//             {!isAdmin && <MobileNavLink href="/" icon={<Home />} label="Home" pathname={pathname} close={setIsOpen} />}
+//             {!isAdmin && <MobileNavLink href="/jobs" icon={<Briefcase />} label="Jobs" pathname={pathname} close={setIsOpen} />}
+//             {!isAdmin && <MobileNavLink href="/aboutus" icon={<Info />} label="About Us" pathname={pathname} close={setIsOpen} />}
+//             {!isAdmin && <MobileNavLink href="/contactus" icon={<Mail />} label="Contact" pathname={pathname} close={setIsOpen} />}
+
+//             {session && <MobileNavLink href="/dashboard" icon={<LayoutDashboard />} label="Dashboard" pathname={pathname} close={setIsOpen} />}
+
+//             {isAdmin && <MobileNavLink href="/dashboard/admin/application" icon={<Users />} label="Applications" pathname={pathname} close={setIsOpen} />}
+//             {isAdmin && <MobileNavLink href="/dashboard/admin/jobListing" icon={<Users />} label="Job Listing" pathname={pathname} close={setIsOpen} />}
+//             {isAdmin && <MobileNavLink href="/dashboard/admin/users" icon={<User />} label="Users" pathname={pathname} close={setIsOpen} />}
+//             {isAdmin && <MobileNavLink href="/dashboard/admin/messages" icon={<MessageSquare />} label="Messages" pathname={pathname} close={setIsOpen} />}
+
+//             {session && (
+//               <button
+//                 onClick={() => {
+//                   handleSignOut();
+//                   setIsOpen(false);
+//                 }}
+//                 className="w-full flex items-center justify-center gap-2 bg-red-50 text-red-600 px-4 py-3 rounded-xl"
+//               >
+//                 <LogOut size={18} />
+//                 Sign Out
+//               </button>
+//             )}
+//           </div>
+//         </div>
+//       </nav>
+
+//       <div className="h-16" />
+//     </>
+//   );
+// }
+
+// /* ────────────────────────────────────────────────
+//    IMPROVED ACTIVE ROUTE DETECTION
+//    ──────────────────────────────────────────────── */
+
+// function isRouteActive(currentPath, targetHref) {
+//   // Home - only exact match
+//   if (targetHref === "/") {
+//     return currentPath === "/";
+//   }
+
+//   // Main Dashboard - ONLY exact /dashboard (this was the main issue)
+//   if (targetHref === "/dashboard") {
+//     return currentPath === "/dashboard";
+//   }
+
+//   // All other routes: exact match OR children
+//   return (
+//     currentPath === targetHref ||
+//     currentPath.startsWith(targetHref + "/")
+//   );
+// }
+
+// function NavLink({ href, icon, label, pathname }) {
+//   const active = isRouteActive(pathname, href);
+
+//   return (
+//     <Link
+//       href={href}
+//       className={`flex items-center gap-2 px-4 py-2 rounded-xl font-medium transition
+//         ${active
+//           ? "bg-indigo-50 text-indigo-600"
+//           : "text-slate-600 hover:text-indigo-600 hover:bg-slate-50"
+//         }`}
+//     >
+//       {icon}
+//       {label}
+//     </Link>
+//   );
+// }
+
+// function MobileNavLink({ href, icon, label, pathname, close }) {
+//   const active = isRouteActive(pathname, href);
+
+//   return (
+//     <Link
+//       href={href}
+//       onClick={() => close(false)}
+//       className={`flex items-center gap-3 px-4 py-3 rounded-xl font-medium
+//         ${active
+//           ? "bg-indigo-50 text-indigo-600"
+//           : "text-slate-600 hover:bg-slate-50"
+//         }`}
+//     >
+//       {icon}
+//       {label}
+//     </Link>
+//   );
+// }
+
+
 "use client";
 
 import Link from "next/link";
@@ -962,7 +1221,11 @@ export default function Navbar() {
             {isAdmin && <MobileNavLink href="/dashboard/admin/users" icon={<User />} label="Users" pathname={pathname} close={setIsOpen} />}
             {isAdmin && <MobileNavLink href="/dashboard/admin/messages" icon={<MessageSquare />} label="Messages" pathname={pathname} close={setIsOpen} />}
 
-            {session && (
+            {session && session.user?.role === "user" && (
+              <MobileNavLink href="/profile" icon={<User />} label="Profile" pathname={pathname} close={setIsOpen} />
+            )}
+
+            {session ? (
               <button
                 onClick={() => {
                   handleSignOut();
@@ -973,6 +1236,15 @@ export default function Navbar() {
                 <LogOut size={18} />
                 Sign Out
               </button>
+            ) : (
+              <Link
+                href="/signin"
+                onClick={() => setIsOpen(false)}
+                className="flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-sky-500 text-white px-4 py-3 rounded-xl font-semibold"
+              >
+                <Sparkles size={18} />
+                Sign In
+              </Link>
             )}
           </div>
         </div>
