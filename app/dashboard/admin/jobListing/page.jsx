@@ -10922,7 +10922,7 @@ export default function Page() {
                                     </Link>
                                   )}
                                   
-                                  <div className="relative">
+                                  {/* <div className="relative">
                                     <select
                                       disabled={isUpdating || !candidate.email}
                                       onChange={(e) => handleStatusChange(e.target.value, candidate)}
@@ -10937,7 +10937,42 @@ export default function Page() {
                                     {isUpdating && (
                                       <Loader2 className="absolute right-10 top-1/2 -translate-y-1/2 text-white animate-spin" size={18} />
                                     )}
-                                  </div>
+                                  </div> */}
+
+                                  <div className="relative">
+  <select
+    disabled={isUpdating || !candidate.email}
+    onChange={(e) => handleStatusChange(e.target.value, candidate)}
+    value={currentStatus}
+    className="w-full appearance-none px-4 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold rounded-xl shadow-md transition cursor-pointer pr-10 disabled:opacity-70 disabled:cursor-not-allowed"
+  >
+    <option 
+      value="pending" 
+      style={{ backgroundColor: '#f59e0b', color: 'white' }}
+      className="bg-amber-500 text-white"
+    >
+      Mark as Pending
+    </option>
+    <option 
+      value="shortlisted" 
+      style={{ backgroundColor: '#10b981', color: 'white' }}
+      className="bg-emerald-500 text-white"
+    >
+      Shortlist Candidate
+    </option>
+    <option 
+      value="rejected" 
+      style={{ backgroundColor: '#ef4444', color: 'white' }}
+      className="bg-rose-500 text-white"
+    >
+      Reject Candidate
+    </option>
+  </select>
+  <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-white pointer-events-none" size={20} />
+  {isUpdating && (
+    <Loader2 className="absolute right-10 top-1/2 -translate-y-1/2 text-white animate-spin" size={18} />
+  )}
+</div>
                                 </div>
                               </div>
                             </div>
