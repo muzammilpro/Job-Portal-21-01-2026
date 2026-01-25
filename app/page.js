@@ -6317,10 +6317,10 @@ function JobCard({ job, index }) {
         }}
         className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm border border-slate-200 flex items-center justify-center hover:bg-white hover:shadow-sm transition-all"
       >
-        <Heart
+        {/* <Heart
           size={16}
           className={isLiked ? "fill-red-500 text-red-500" : "text-slate-400"}
-        />
+        /> */}
       </button>
 
       <div className="relative">

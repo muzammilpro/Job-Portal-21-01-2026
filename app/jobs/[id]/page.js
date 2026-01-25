@@ -949,12 +949,12 @@ export default function JobDetailPage() {
           </button>
 
           <div className="hidden md:flex items-center gap-3">
-            <button
+            {/* <button
               onClick={handleSave}
               className="p-2 rounded-xl bg-gray-100 hover:bg-gray-200 transition"
             >
               {saved ? <BookmarkCheck size={20} className="text-indigo-600" /> : <Bookmark size={20} />}
-            </button>
+            </button> */}
             <button
               onClick={handleShare}
               className="p-2 rounded-xl bg-gray-100 hover:bg-gray-200 transition"
@@ -968,13 +968,13 @@ export default function JobDetailPage() {
         {isMobileMenuOpen && (
           <div className="md:hidden bg-white border-t border-gray-200 px-4 py-3 shadow-lg">
             <div className="flex items-center justify-between">
-              <button
+              {/* <button
                 onClick={handleSave}
                 className="flex flex-col items-center gap-1 text-gray-600 hover:text-indigo-600 transition p-2 rounded-lg"
               >
                 {saved ? <BookmarkCheck size={20} className="text-indigo-600" /> : <Bookmark size={20} />}
                 <span className="text-xs">{saved ? "Saved" : "Save"}</span>
-              </button>
+              </button> */}
               <button
                 onClick={handleShare}
                 className="flex flex-col items-center gap-1 text-gray-600 hover:text-indigo-600 transition p-2 rounded-lg"
@@ -1122,13 +1122,13 @@ export default function JobDetailPage() {
 
             {/* Mobile Save Button */}
             <div className="md:hidden mt-6">
-              <button
+              {/* <button
                 onClick={handleSave}
                 className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-gray-50 to-gray-100 border border-gray-300 text-gray-700 font-medium hover:bg-gray-200 transition"
               >
                 {saved ? <BookmarkCheck size={18} className="text-indigo-600" /> : <Bookmark size={18} />}
                 {saved ? "Saved" : "Save Job"}
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
