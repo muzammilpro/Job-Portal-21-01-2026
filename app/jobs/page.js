@@ -234,13 +234,18 @@ import {
 export default function JobsPage() {
   const [jobs, setJobs] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
 
   const jobsRef = useRef(null);
+  const searchTimeoutRef = useRef(null);
 
   useEffect(() => {
     fetch("/api/jobs")
       .then((res) => res.json())
-      .then((data) => setJobs(data));
+      .then((data) => {
+        setJobs(data);
+        setIsInitialLoad(false);
+      });
   }, []);
 
   const filteredJobs = jobs.filter((job) =>
@@ -250,14 +255,37 @@ export default function JobsPage() {
   );
 
   useEffect(() => {
-    if (!searchTerm.trim() || !jobsRef.current) return;
+    // Clear any existing timeout
+    if (searchTimeoutRef.current) {
+      clearTimeout(searchTimeoutRef.current);
+    }
 
-    const timeout = setTimeout(() => {
-      jobsRef.current.scrollIntoView({ behavior: "smooth" });
-    }, 50);
+    // Don't scroll on initial load or when search is cleared
+    if (isInitialLoad || !searchTerm.trim() || !jobsRef.current) {
+      return;
+    }
 
-    return () => clearTimeout(timeout);
-  }, [searchTerm]);
+    // Only scroll when user stops typing (debounce)
+    searchTimeoutRef.current = setTimeout(() => {
+      if (filteredJobs.length > 0) {
+        jobsRef.current.scrollIntoView({ 
+          behavior: "smooth", 
+          block: "start",
+          inline: "nearest" 
+        });
+      }
+    }, 300); // 300ms debounce delay
+
+    return () => {
+      if (searchTimeoutRef.current) {
+        clearTimeout(searchTimeoutRef.current);
+      }
+    };
+  }, [searchTerm, filteredJobs.length, isInitialLoad]);
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden">
@@ -306,7 +334,7 @@ export default function JobsPage() {
               <input
                 placeholder="Search roles, companies, or locations..."
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                onChange={handleSearchChange}
                 className="flex-1 outline-none bg-transparent text-gray-800 placeholder:text-gray-500 font-medium text-base"
               />
             </div>
@@ -332,18 +360,28 @@ export default function JobsPage() {
               <Briefcase className="text-cyan-600" size={48} />
             </div>
             <h3 className="text-xl sm:text-2xl font-bold mb-3 text-gray-800">
-              No matches detected
+              {searchTerm ? "No matches found" : "No jobs available"}
             </h3>
             <p className="text-gray-500 text-base sm:text-lg">
-              Refine your search parameters.
+              {searchTerm ? "Try different keywords" : "Check back soon for new opportunities"}
             </p>
           </div>
         ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {filteredJobs.map((job) => (
-              <JobCard key={job._id} job={job} />
-            ))}
-          </div>
+          <>
+            <div className="mb-6 text-center">
+              <p className="text-gray-600 font-medium">
+                Found <span className="font-bold text-cyan-600">{filteredJobs.length}</span> job{filteredJobs.length !== 1 ? 's' : ''}
+                {searchTerm && (
+                  <span className="text-gray-500"> for "<span className="font-medium">{searchTerm}</span>"</span>
+                )}
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {filteredJobs.map((job) => (
+                <JobCard key={job._id} job={job} />
+              ))}
+            </div>
+          </>
         )}
       </section>
     </div>
@@ -351,22 +389,6 @@ export default function JobsPage() {
 }
 
 /* ---------------- COMPONENTS ---------------- */
-
-function Stat({ icon, label, value }) {
-  return (
-    <div className="group bg-white/70 backdrop-blur-xl rounded-2xl p-6 border border-gray-100 hover:border-cyan-300/50 shadow-lg hover:shadow-2xl hover:shadow-cyan-200/40 hover:-translate-y-3 transition-all duration-500">
-      <div className="flex flex-col items-center">
-        <div className="text-cyan-500 mb-3 group-hover:scale-110 transition-transform duration-500">
-          {icon}
-        </div>
-        <p className="text-2xl sm:text-3xl font-extrabold bg-gradient-to-r from-cyan-600 to-purple-600 bg-clip-text text-transparent">
-          {value}
-        </p>
-        <p className="text-gray-600 text-xs sm:text-sm font-medium mt-1">{label}</p>
-      </div>
-    </div>
-  );
-}
 
 function JobCard({ job }) {
   return (

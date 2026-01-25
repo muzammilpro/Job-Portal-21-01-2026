@@ -10031,14 +10031,7 @@ export default function Page() {
                 Manage job postings, analyze applicants, and streamline your hiring process
               </p>
             </div>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl font-semibold flex items-center gap-2 shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              <Briefcase size={20} />
-              Post New Job
-            </motion.button>
+         
           </div>
 
           {/* STATS CARDS */}
