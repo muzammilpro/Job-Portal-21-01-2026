@@ -4593,7 +4593,7 @@
 //                                     View Full Profile
 //                                   </Link>
 //                                 )}
-                                
+
 //                                 <div className="relative">
 //                                   <select
 //                                     disabled={isUpdating || !candidate.email}
@@ -4610,8 +4610,8 @@
 //                                     <Loader2 className="absolute right-10 top-1/2 -translate-y-1/2 text-white animate-spin" size={18} />
 //                                   )}
 //                                 </div>
-                                
-                                
+
+
 //                               </div>
 //                             </div>
 //                           </div>
@@ -4852,7 +4852,7 @@
 //       </motion.div>
 //     </div>
 //   );
-  
+
 //   if (!session || session.user.role === "user") return null;
 
 //   const getStatusLabel = (status) => {
@@ -5193,7 +5193,7 @@
 //                   }}
 //                   transition={{ duration: 2, repeat: Infinity }}
 //                 />
-                
+
 //                 <motion.div
 //                   variants={cardHoverVariants}
 //                   className="relative bg-gradient-to-br from-white/90 to-gray-50/90 backdrop-blur-sm rounded-2xl border border-gray-200/80 overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer"
@@ -5302,7 +5302,7 @@
 //                       </motion.div>
 //                     </div>
 //                   </div>
-                  
+
 //                   {/* Slide-in indicator */}
 //                   <motion.div
 //                     className="absolute right-0 top-0 bottom-0 w-1 bg-gradient-to-b from-indigo-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -5723,7 +5723,7 @@
 //                                       </Link>
 //                                     </motion.div>
 //                                   )}
-                                  
+
 //                                   <div className="relative">
 //                                     <motion.select
 //                                       whileHover={{ scale: 1.02 }}
@@ -5741,8 +5741,8 @@
 //                                       <Loader2 className="absolute right-10 top-1/2 -translate-y-1/2 text-white animate-spin" size={18} />
 //                                     )}
 //                                   </div>
-                                  
-                                  
+
+
 //                                 </div>
 //                               </div>
 //                             </div>
@@ -5986,7 +5986,7 @@
 //       </motion.div>
 //     </div>
 //   );
-  
+
 //   if (!session || session.user.role === "user") return null;
 
 //   const getStatusLabel = (status) => {
@@ -7022,7 +7022,7 @@
 //                                       <ExternalLink size={16} />
 //                                     </Link>
 //                                   )}
-                                  
+
 //                                   <div className="relative">
 //                                     <select
 //                                       disabled={isUpdating || !candidate.email}
@@ -7039,7 +7039,7 @@
 //                                       <Loader2 className="absolute right-10 top-1/2 -translate-y-1/2 text-white animate-spin" size={18} />
 //                                     )}
 //                                   </div>
-                                  
+
 //                                   {/* <button className="w-full px-4 py-3 border-2 border-gray-300 hover:border-gray-400 text-gray-700 font-medium rounded-xl flex items-center justify-center gap-2 transition-all duration-300">
 //                                     <Download size={18} />
 //                                     Download Resume
@@ -7195,7 +7195,7 @@
 //         const application = jobData.applications.find(
 //           (app) => app.userName?.toLowerCase() === candidate.name?.toLowerCase()
 //         );
-        
+
 //         return {
 //           ...candidate,
 //           applicationStatus: application?.status || "pending",
@@ -7292,7 +7292,7 @@
 //       </motion.div>
 //     </div>
 //   );
-  
+
 //   if (!session || session.user.role === "user") return null;
 
 //   const getStatusLabel = (status) => {
@@ -8325,7 +8325,7 @@
 //                                       <ExternalLink size={16} />
 //                                     </Link>
 //                                   )}
-                                  
+
 //                                   <div className="relative">
 //                                     <select
 //                                       disabled={isUpdating || !candidate.name}
@@ -8493,7 +8493,7 @@
 //         const application = jobData.applications.find(
 //           (app) => app.userEmail?.toLowerCase() === candidate.email?.toLowerCase()
 //         );
-        
+
 //         return {
 //           ...candidate,
 //           applicationStatus: application?.status || "pending",
@@ -8641,7 +8641,7 @@
 //       </motion.div>
 //     </div>
 //   );
-  
+
 //   if (!session || session.user.role === "user") return null;
 
 //   const getStatusLabel = (status) => {
@@ -9623,7 +9623,7 @@
 //                                       <ExternalLink size={16} />
 //                                     </Link>
 //                                   )}
-                                  
+
 //                                   <div className="relative">
 //                                     <select
 //                                       disabled={isUpdating || !candidate.email}
@@ -9791,7 +9791,7 @@ export default function Page() {
         const application = jobData.applications.find(
           (app) => app.userEmail?.toLowerCase() === candidate.email?.toLowerCase()
         );
-        
+
         return {
           ...candidate,
           applicationStatus: application?.status || "pending",
@@ -9939,7 +9939,7 @@ export default function Page() {
       </motion.div>
     </div>
   );
-  
+
   if (!session || session.user.role === "user") return null;
 
   const getStatusLabel = (status) => {
@@ -9967,8 +9967,8 @@ export default function Page() {
   };
 
   const getJobStatusColor = (status) => {
-    return status === "Open" 
-      ? "bg-gradient-to-r from-emerald-500 to-teal-600 text-white" 
+    return status === "Open"
+      ? "bg-gradient-to-r from-emerald-500 to-teal-600 text-white"
       : "bg-gradient-to-r from-rose-500 to-pink-600 text-white";
   };
 
@@ -10000,7 +10000,7 @@ export default function Page() {
 
   const cardHoverVariants = {
     initial: { scale: 1 },
-    hover: { 
+    hover: {
       scale: 1.02,
       transition: { type: "spring", stiffness: 300, damping: 20 }
     }
@@ -10016,7 +10016,7 @@ export default function Page() {
 
       <div className="max-w-7xl mx-auto px-4 py-8 space-y-8 relative">
         {/* HEADER WITH STATS */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
@@ -10042,7 +10042,7 @@ export default function Page() {
           </div>
 
           {/* STATS CARDS */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -10086,7 +10086,7 @@ export default function Page() {
               transition={{ type: "spring", damping: 25 }}
               className="relative overflow-hidden"
             >
-              <motion.div 
+              <motion.div
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 2 }}
@@ -10104,7 +10104,7 @@ export default function Page() {
                   </motion.div>
                   <span className="font-medium">{successMsg}</span>
                 </div>
-                <motion.button 
+                <motion.button
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={() => setSuccessMsg("")}
@@ -10132,7 +10132,7 @@ export default function Page() {
                 </motion.div>
                 <span className="font-medium">{errorMsg}</span>
               </div>
-              <motion.button 
+              <motion.button
                 whileHover={{ rotate: 90 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setErrorMsg("")}
@@ -10145,7 +10145,7 @@ export default function Page() {
         </AnimatePresence>
 
         {/* SEARCH AND FILTERS BAR */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -10295,7 +10295,7 @@ export default function Page() {
 
         {/* JOB CARDS GRID */}
         {loadingJobs ? (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="flex justify-center items-center py-20"
@@ -10340,7 +10340,7 @@ export default function Page() {
             </motion.button>
           </motion.div>
         ) : viewMode === "grid" ? (
-          <motion.div 
+          <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -10420,7 +10420,7 @@ export default function Page() {
                         <p className="text-xs text-gray-500 uppercase tracking-wider mb-2">Required Skills</p>
                         <div className="flex flex-wrap gap-2">
                           {job.skills.slice(0, 3).map((skill, i) => (
-                            <motion.span 
+                            <motion.span
                               key={i}
                               whileHover={{ scale: 1.05, y: -2 }}
                               className="px-3 py-1 bg-blue-50 text-blue-700 rounded-lg text-xs font-medium border border-blue-100"
@@ -10452,7 +10452,7 @@ export default function Page() {
                           </div>
                         )}
                       </div>
-                      <motion.div 
+                      <motion.div
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.2 }}
@@ -10605,7 +10605,7 @@ export default function Page() {
                 className="bg-white rounded-3xl max-w-6xl w-full p-8 overflow-y-auto max-h-[90vh] shadow-2xl"
               >
                 {/* Close button */}
-                <motion.button 
+                <motion.button
                   whileHover={{ rotate: 90, scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={closeModals}
@@ -10733,7 +10733,7 @@ export default function Page() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
-                    whileHover={{ 
+                    whileHover={{
                       scale: 1.02,
                       boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)"
                     }}
@@ -10835,7 +10835,7 @@ export default function Page() {
 
                       {aiResult.map((candidate, i) => {
                         const candidateKey = candidate.email?.toLowerCase().trim() || '';
-                        const realApplication = selectedJob.applications?.find((app) => 
+                        const realApplication = selectedJob.applications?.find((app) =>
                           app.userEmail?.toLowerCase().trim() === candidateKey
                         );
                         const currentStatus = realApplication?.status || "pending";
@@ -10921,7 +10921,7 @@ export default function Page() {
                                       <ExternalLink size={16} />
                                     </Link>
                                   )}
-                                  
+
                                   {/* <div className="relative">
                                     <select
                                       disabled={isUpdating || !candidate.email}
@@ -10940,39 +10940,39 @@ export default function Page() {
                                   </div> */}
 
                                   <div className="relative">
-  <select
-    disabled={isUpdating || !candidate.email}
-    onChange={(e) => handleStatusChange(e.target.value, candidate)}
-    value={currentStatus}
-    className="w-full appearance-none px-4 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold rounded-xl shadow-md transition cursor-pointer pr-10 disabled:opacity-70 disabled:cursor-not-allowed"
-  >
-    <option 
-      value="pending" 
-      style={{ backgroundColor: '#f59e0b', color: 'white' }}
-      className="bg-amber-500 text-white"
-    >
-      Mark as Pending
-    </option>
-    <option 
-      value="shortlisted" 
-      style={{ backgroundColor: '#10b981', color: 'white' }}
-      className="bg-emerald-500 text-white"
-    >
-      Shortlist Candidate
-    </option>
-    <option 
-      value="rejected" 
-      style={{ backgroundColor: '#ef4444', color: 'white' }}
-      className="bg-rose-500 text-white"
-    >
-      Reject Candidate
-    </option>
-  </select>
-  <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-white pointer-events-none" size={20} />
-  {isUpdating && (
-    <Loader2 className="absolute right-10 top-1/2 -translate-y-1/2 text-white animate-spin" size={18} />
-  )}
-</div>
+                                    <select
+                                      disabled={isUpdating || !candidate.email}
+                                      onChange={(e) => handleStatusChange(e.target.value, candidate)}
+                                      value={currentStatus}
+                                      className="w-full appearance-none px-4 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold rounded-xl shadow-md transition cursor-pointer pr-10 disabled:opacity-70 disabled:cursor-not-allowed"
+                                    >
+                                      <option
+                                        value="pending"
+                                        style={{ backgroundColor: '#f59e0b', color: 'white' }}
+                                        className="bg-amber-500 text-white"
+                                      >
+                                        Mark as Pending
+                                      </option>
+                                      <option
+                                        value="shortlisted"
+                                        style={{ backgroundColor: '#10b981', color: 'white' }}
+                                        className="bg-emerald-500 text-white"
+                                      >
+                                        Shortlist Candidate
+                                      </option>
+                                      <option
+                                        value="rejected"
+                                        style={{ backgroundColor: '#ef4444', color: 'white' }}
+                                        className="bg-rose-500 text-white"
+                                      >
+                                        Reject Candidate
+                                      </option>
+                                    </select>
+                                    <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-white pointer-events-none" size={20} />
+                                    {isUpdating && (
+                                      <Loader2 className="absolute right-10 top-1/2 -translate-y-1/2 text-white animate-spin" size={18} />
+                                    )}
+                                  </div>
                                 </div>
                               </div>
                             </div>
